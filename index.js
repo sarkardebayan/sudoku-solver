@@ -1,6 +1,8 @@
 const mainContent = document.querySelector('.board');
 const btn = document.querySelector('#submit');
+const clrbtn = document.querySelector('#clear');
 btn.addEventListener("click", solve);
+clrbtn.addEventListener("click", clear);
 for(let i=1; i<=81; ++i){
     const input = document.createElement('input');
     input.setAttribute('type', 'number');
@@ -8,7 +10,12 @@ for(let i=1; i<=81; ++i){
     input.setAttribute('max', 9);
     mainContent.appendChild(input);
 }
-
+function clear(){
+    const inputs = document.querySelectorAll('input');
+    for(let input of inputs){
+        input.value = '';
+    }
+}
 function solveSudoku(board, row, col)
 {
 	if (row == 8 && col == 9)
