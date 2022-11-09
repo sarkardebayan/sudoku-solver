@@ -18,24 +18,23 @@ function clear(){
 }
 function solveSudoku(board, row, col)
 {
-	if (row == 8 && col == 9)
+	if (row == 8 && col == 9){
 		return true;
+	}
 
     // After reaching the end of the row
-	if (col == 9)
-	{
+	if (col == 9){
 		row++;
 		col = 0;
 	}
 
     // If the cel is not empty, move to the next cell
-	if (board[row][col] != 0)
+	if (board[row][col] != 0){
 		return solveSudoku(board, row, col + 1);
+	}
 
-	for(let n = 1; n < 10; n++)
-	{
-		if (isValid(board, row, col, n))
-		{
+	for(let n = 1; n < 10; n++){
+		if (isValid(board, row, col, n)){
 			board[row][col] = n;
 			if (solveSudoku(board, row, col + 1))
 				return true;
@@ -64,7 +63,7 @@ function isValid(board, row, col, n)
     // Check the 3 x 3 square
 	const row_i = row - row % 3;
 	const col_i = col - col % 3;
-		
+
 	for(let i = 0; i < 3; i++){
 		for(let j = 0; j < 3; j++){
 			if (board[i + row_i][j + col_i] == n){
